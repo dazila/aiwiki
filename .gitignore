@@ -1,0 +1,44 @@
+# Vagrant
+.vagrant/
+*.box
+
+# Docker / VM artifacts
+*.vmdk
+*.qcow2
+*.img
+*.iso
+
+# Секреты
+*.env
+!*.env.example
+*.secret
+*.key
+*.pem
+*.crt
+
+# Vault
+*.vault
+
+# Локальные кеши
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python (для будущих скриптов)
+__pycache__/
+*.py[cod]
+.venv/
+
+# n8n локальные данные (если случайно скопируются)
+.n8n/
+
+# Бэкапы
+*.bak
+*.dump
+*.sql.gz
+backups/
