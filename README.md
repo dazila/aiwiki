@@ -62,7 +62,7 @@ aiwiki/
 
 ## Прогресс по Light
 
-- [ ] Этап 0 — подготовка хоста (Ubuntu Server, KVM, Vagrant, мост, Avahi)
+- [x] Этап 0 — подготовка хоста (Ubuntu Server, KVM, Vagrant, мост, Avahi)
 - [ ] Этап 1 — Vagrantfile + 4 ВМ
 - [ ] Этап 2 — PostgreSQL с тремя базами
 - [ ] Этап 3 — n8n на Postgres
