@@ -19,6 +19,9 @@
 # Vault
 *.vault
 
+# Локальный конфиг прокси-обёртки (содержит host VPS)
+scripts/.env-proxy
+
 # Локальные кеши
 .DS_Store
 Thumbs.db
