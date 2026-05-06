@@ -32,6 +32,7 @@ fi
 PROXY_HOST="${PROXY_HOST:-}"
 PROXY_USER="${PROXY_USER:-}"
 PROXY_SSH_PORT="${PROXY_SSH_PORT:-22}"
+PROXY_KEY="${PROXY_KEY:-}"          # путь к ssh-ключу; если пусто — ssh выберет сам
 SOCKS_PORT="${SOCKS_PORT:-1080}"
 HTTP_PORT="${HTTP_PORT:-8118}"
 
@@ -81,11 +82,16 @@ cmd_up() {
         echo "[proxy] ssh tunnel: уже поднят"
     else
         echo "[proxy] поднимаем ssh -D ${SOCKS_PORT} → ${PROXY_USER}@${PROXY_HOST}:${PROXY_SSH_PORT}"
+        local key_args=()
+        if [[ -n "${PROXY_KEY}" ]]; then
+            key_args+=(-i "${PROXY_KEY}" -o IdentitiesOnly=yes)
+        fi
         ssh -D "${SOCKS_PORT}" -N -f \
             -o ServerAliveInterval=30 \
             -o ServerAliveCountMax=3 \
             -o ExitOnForwardFailure=yes \
             -p "${PROXY_SSH_PORT}" \
+            "${key_args[@]}" \
             "${PROXY_USER}@${PROXY_HOST}"
     fi
 
