@@ -52,9 +52,23 @@ aiwiki/
 ├── Vagrantfile                — описание ВМ
 ├── provisioning/              — shell-скрипты для bring-up
 ├── configs/                   — конфиги сервисов (compose, init.sql, env)
+├── scripts/                   — вспомогательные утилиты (proxy.sh)
 ├── workflows/                 — экспорт workflow из n8n
-└── docs/                      — архитектура, runbook, заметки
+└── docs/
+    ├── architecture.md        — общая архитектура
+    ├── runbook-light.md       — runbook операций для Light
+    ├── study/                 — exam guide и теория по этапам
+    │   ├── _process.md        — формат работы (читай в первую очередь)
+    │   └── light-NN-*.md      — материалы по этапу NN
+    └── notes/                 — knowledge base (заполняется по ходу)
+        ├── _glossary.md       — глоссарий ключевых терминов
+        ├── 00-decisions.md    — архитектурные решения
+        └── …                  — конспекты по темам
 ```
+
+## Формат работы
+
+Описан в [`docs/study/_process.md`](docs/study/_process.md). С этапа 2 Light переходим в учебно-ориентированный режим: pre-flight → exam guide → теория → спецификация → реализация → ревью → защита → reflection → notes.
 
 ## Запуск
 
@@ -63,7 +77,7 @@ aiwiki/
 ## Прогресс по Light
 
 - [x] Этап 0 — подготовка хоста (Ubuntu Server, KVM, Vagrant, мост, Avahi)
-- [ ] Этап 1 — Vagrantfile + 4 ВМ
+- [x] Этап 1 — Vagrantfile + 4 ВМ
 - [ ] Этап 2 — PostgreSQL с тремя базами
 - [ ] Этап 3 — n8n на Postgres
 - [ ] Этап 4 — Ollama в ВМ + qwen2.5:3b-instruct
