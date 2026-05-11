@@ -28,7 +28,29 @@ vagrant up
 
 ### Этап 2 — PostgreSQL доступен из подсети
 
-*(будет дописано)*
+После `vagrant provision aiwiki-pg` (или `vagrant up` на чистой машине) проверка:
+
+```bash
+# С aiwiki-n8n: подключаемся к каждой из трёх БД по сети
+vagrant ssh aiwiki-n8n -c "
+    apt list --installed 2>/dev/null | grep -q postgresql-client || sudo apt-get install -y postgresql-client
+    PGPASSWORD=n8n_pass_light    psql -h 192.168.1.20 -U n8n_user    -d n8n          -c 'SELECT current_database(), current_user;'
+    PGPASSWORD=wikijs_pass_light psql -h 192.168.1.20 -U wikijs_user -d wikijs       -c 'SELECT current_database(), current_user;'
+    PGPASSWORD=agent_pass_light  psql -h 192.168.1.20 -U agent_user  -d agent_memory -c 'SELECT current_database(), current_user;'
+"
+```
+
+Каждый запрос должен вернуть имя БД и имя пользователя.
+
+Дополнительно — отказ извне подсети:
+
+```bash
+# С мака (192.168.1.X): подключение должно работать
+psql -h aiwiki-pg.local -U n8n_user -d n8n  # пароль: n8n_pass_light
+
+# С хоста pc-host (192.168.121.X через mgmt) — не должно работать,
+# потому что pg_hba.conf разрешает только 192.168.1.0/24.
+```
 
 ### Этап 3 — n8n хранит данные в Postgres
 
