@@ -78,7 +78,7 @@ aiwiki/
 
 - [x] Этап 0 — подготовка хоста (Ubuntu Server, KVM, Vagrant, мост, Avahi)
 - [x] Этап 1 — Vagrantfile + 4 ВМ
-- [ ] Этап 2 — PostgreSQL с тремя базами
+- [x] Этап 2 — PostgreSQL с тремя базами
 - [ ] Этап 3 — n8n на Postgres
 - [ ] Этап 4 — Ollama в ВМ + qwen2.5:3b-instruct
 - [ ] Этап 5 — workflow Chat → AI Agent → Ollama
